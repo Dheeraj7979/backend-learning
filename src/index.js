@@ -9,5 +9,7 @@ import { app } from "./app.js";
 app.get('/', (req,res)=>{
      res.send("working");
 })
-app.listen(process.env.PORT)
+app.listen(process.env.PORT,()=>{
+     console.log("server is running at",process.env.PORT)
+})
 connectDB()

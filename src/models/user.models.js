@@ -1,5 +1,5 @@
 import mongoose,{Schema} from 'mongoose'
-import {bcrypt} from 'bcrypt'
+import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken"
 
 const userSchema= Schema({
@@ -40,10 +40,10 @@ const userSchema= Schema({
 },{timestamps:true}
 )
      // HASH PASSWORD USING BCRYPT PACKAGE...
-userSchema.pre("save", async function(next){
-     if(!this.isModified("password")) return next()
-     this.password= await bcrypt.hash(this.password,8);
-     next();
+userSchema.pre("save", async function(){
+     if(!this.isModified("password")) return;
+     this.password = await bcrypt.hash(this.password,8);
+     
 })
           //CHECK PASSWORD CORRECT OR NOT USING BCRYPT 
 userSchema.methods.isPasswordCorrect=async function(password){
@@ -75,7 +75,5 @@ userSchema.methods.generateRefreshToken= function(){
           }
      )
 }
-
-
 
 export const User = mongoose.model("User",userSchema);
