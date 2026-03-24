@@ -1,5 +1,10 @@
 import { Router } from "express";
+import { cloudinaryFileUploader } from "../utils/cloudinary.js";
+import { registerUser } from "../controllers/user.controller.js";
 
-const route =Router();
+const router =Router();
 
-route.get('/user',)
+router.route('/register').post(registerUser) 
+
+
+export default router

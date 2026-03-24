@@ -3,7 +3,6 @@ import cors from "cors"
 import cookieParser from 'cookie-parser'
 
 const app=express();
-
 app.use(cors({
      origin: process.env.CORS_ORIGIN,
      credentials:true,
@@ -16,3 +15,16 @@ app.use(express.urlencoded({extended:true,limit:"16kb"}))
 app.use(express.static("public"))
           // to read user cookie 
 app.use(cookieParser())
+
+
+
+
+// ROUTES IMPORT ....
+import userRouter from '../routes/user.routes.js'
+
+
+// routes declaration
+app.use('/user',userRouter);
+
+
+export {app}
