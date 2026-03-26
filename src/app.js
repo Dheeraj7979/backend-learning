@@ -8,9 +8,9 @@ app.use(cors({
      credentials:true,
 }))
           // FOR JSON FILE 
-app.use(express.json({limit:"16kb"}));
+app.use(express.json({limit:"16mb"}));
           // FOR URLS  extended use for nested objects 
-app.use(express.urlencoded({extended:true,limit:"16kb"}))
+app.use(express.urlencoded({extended:true,limit:"16mb"}))
           //   TO STORE FILE OR MEDIA IN FOLDER
 app.use(express.static("public"))
           // to read user cookie 
